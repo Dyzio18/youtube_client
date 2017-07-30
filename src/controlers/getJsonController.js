@@ -2,13 +2,13 @@ import axios from 'axios';
 import {jsonCodeView} from '../view/jsonView';
 
 
-export let jsonRequest = () => {
-	const resultElement = document.getElementById('json_res');
+export let jsonRequest = (idSection) => {
+	const resultElement = document.getElementById(`${idSection}__result`);
 	resultElement.innerHTML = '';
 
 	axios.get('https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails')
 		.then(function (response) {
-			jsonCodeView('json_res', response.data);
+			jsonCodeView(`${idSection}__result`, response.data);
 		})
 		.catch(function (error) {
 			resultElement.innerHTML = 'error' ;

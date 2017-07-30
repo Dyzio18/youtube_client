@@ -1,16 +1,17 @@
-import { TestHello } from './controlers/test';
+import {TestHello} from './controlers/test';
 import {jsonRequest}  from './controlers/getJsonController';
-import {initView}  from './view/initView';
+import {sectionView}  from './view/appView';
 
-initView('app');
+sectionView('app');
 
-jsonRequest();
+jsonRequest('channel');
 
 const hello = new TestHello('DYZIO');
 hello.sayHello();
 
 
 /* TODO
-- Create buttons and send value to controller {Button} and then to
+-   Create buttons and send value to controller {Button} and then search
+    [ Draw it ! ]
 
  */
