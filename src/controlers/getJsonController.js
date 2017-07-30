@@ -1,13 +1,6 @@
 import axios from 'axios';
 import {jsonCodeView} from '../view/jsonView';
 
-/*
-export let jsonRequest = (url) => axios({
-        method: 'get',
-        url: 'https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails',
-    });*/
-
-
 
 export let jsonRequest = () => {
 	const resultElement = document.getElementById('json_res');

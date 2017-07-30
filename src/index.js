@@ -1,13 +1,16 @@
 import { TestHello } from './controlers/test';
 import {jsonRequest}  from './controlers/getJsonController';
-import {syntaxHighlight} from './services/jsonServices';
-import {jsonCodeView} from './view/jsonView';
+import {initView}  from './view/initView';
 
-jsonRequest()
+initView('app');
 
-/*
-let jsonRes = ;
-jsonCodeView( 'json_res', jsonRes );
-*/
+jsonRequest();
+
 const hello = new TestHello('DYZIO');
 hello.sayHello();
+
+
+/* TODO
+- Create buttons and send value to controller {Button} and then to
+
+ */
