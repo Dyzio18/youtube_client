@@ -5,8 +5,8 @@ export let searchView = (idSection) =>{
                         <form>
                             <div class="input-field">
                                 <label for="${idSection}__search">Search</label>
-                                <input id="${idSection}__search" type="search" required>
-                                <button id="${idSection}__btn" class="waves-effect waves-light btn"><i class="material-icons right">chevron_right</i> Go!
+                                <input id="${idSection}__search" type="text" value=" " required>
+                                <button id="${idSection}__btn" class="waves-effect waves-light btn" type='button'><i class="material-icons right">chevron_right</i> Go!
                                 </button>
                             </div>
                         </form>

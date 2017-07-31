@@ -6,13 +6,14 @@ import {jsonCodeView} from '../view/jsonView';
  * @param {string} idSection
  * @param {string} url
  */
-export let sendRequest = (idSection) => {
+export let sendRequest = (idSection, url) => {
 	const resultElement = document.getElementById(`${idSection}__result`);
 	resultElement.innerHTML = '';
 	const test = document.getElementById('jsonTest');
+	console.log(url);
 
 
-	axios.get('https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails')
+	axios.get(url)
 		.then(function (response) {
 			test.innerHTML = JSON.stringify(response.data);
 			jsonCodeView(`${idSection}__result`, response.data);
@@ -24,4 +25,5 @@ export let sendRequest = (idSection) => {
 
 /* TODO
  * url must be variable
+ * https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails
  */

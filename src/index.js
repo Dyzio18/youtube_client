@@ -1,17 +1,19 @@
-import {TestHello} from './controlers/test';
-import {sendRequest}  from './services/requestServices';
+import {TestHello} from './controller/test';
+import {sendRequest}  from './service/requestServices';
 import {sectionView}  from './view/appView';
+import {searchController} from './controller/searchController'
+
 
 sectionView('app');
 
-sendRequest('channel');
+searchController();
 
 const hello = new TestHello('DYZIO');
 hello.sayHello();
 
 
 /* TODO
--   Create buttons and send value to controller {Button} and then search
-    [ Draw it ! ]
-
+-   Create buttons and send value to controller {Button} and then search [ Draw it ! ]
+-   Config file
+-   Get url  (do this better)
  */
