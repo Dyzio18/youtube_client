@@ -1,10 +1,10 @@
 import {TestHello} from './controlers/test';
-import {jsonRequest}  from './controlers/getJsonController';
+import {sendRequest}  from './services/requestServices';
 import {sectionView}  from './view/appView';
 
 sectionView('app');
 
-jsonRequest('channel');
+sendRequest('channel');
 
 const hello = new TestHello('DYZIO');
 hello.sayHello();

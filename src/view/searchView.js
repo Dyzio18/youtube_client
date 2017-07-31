@@ -1,5 +1,5 @@
 export let searchView = (idSection) =>{
-    return    `    <div class="col s12 m12 l4">
+	return    `    <div class="col s12 m12 l4">
                         <h4 class="blue-grey-text"> ${idSection} data</h4>
                         <p>${channelDescription()}</p>
                         <form>
@@ -10,9 +10,9 @@ export let searchView = (idSection) =>{
                                 </button>
                             </div>
                         </form>
-                    </div>`
+                    </div>`;
 };
 
 const channelDescription = () => {
-    return `Get channel data, write channel id (e.g. UCACp5rqV3Ki0SNdXWDBLhRA )`;
+	return 'Get channel data, write channel id (e.g. UCACp5rqV3Ki0SNdXWDBLhRA )';
 };

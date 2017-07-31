@@ -13,26 +13,13 @@
         },
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent": ["error","tab" ],
+        "spaced-comment": ["error", "always"],
         "camelcase":[2, {"properties": "always"}],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "linebreak-style": ["error", "windows"],
+        "quotes": ["error","single"],
+        "semi": ["error","always"]
     }
 }

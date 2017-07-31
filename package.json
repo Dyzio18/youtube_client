@@ -4,8 +4,8 @@
   "description": "youtube client, youtube api, yt",
   "main": "./index.html",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --colors ./src/shapes/**/*.test.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./src/shapes/**/*.test.js",
+    "test": "mocha --compilers js:babel-core/register --colors ./src/**/*.test.js",
+    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./src/**/*.test.js",
     "lint": "eslint --cache src/**/*.js",
     "lint:fix": "eslint --fix --cache src/**/*.js",
     "build:dev": "webpack",

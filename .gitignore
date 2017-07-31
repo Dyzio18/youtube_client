@@ -1,2 +1,5 @@
 node_modules/
 dist/*.js
+.idea/
+.eslintcache
+npm-debug.log
