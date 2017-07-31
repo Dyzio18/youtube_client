@@ -9,13 +9,8 @@ import {jsonCodeView} from '../view/jsonView';
 export let sendRequest = (idSection, url) => {
 	const resultElement = document.getElementById(`${idSection}__result`);
 	resultElement.innerHTML = '';
-	const test = document.getElementById('jsonTest');
-	console.log(url);
-
-
 	axios.get(url)
 		.then(function (response) {
-			test.innerHTML = JSON.stringify(response.data);
 			jsonCodeView(`${idSection}__result`, response.data);
 		})
 		.catch(function (error) {

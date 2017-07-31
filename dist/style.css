@@ -3,10 +3,16 @@
     max-width: 600px;
     height: auto;
 }
-
+.margTop__m{
+    margin-top:20px;
+}
 pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .string { color: green; }
 .number { color: darkorange; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
+
+.JSONviewer{
+    max-height: 350px;
+}

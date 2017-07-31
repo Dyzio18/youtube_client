@@ -10,8 +10,8 @@ export const sectionView = (idElem ) => {
 			${setHeader()}
             <section class="container ">
                 <div class="row">
-                    ${searchView('channel')}
-                    ${resultView('channel')}                
+                    ${searchView('video')}
+                    ${resultView('video')}                
                 </div>
             </section><!--/ Channel -->
 	`;

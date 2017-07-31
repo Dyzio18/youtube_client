@@ -1,3 +1,6 @@
+/* eslint no-undef: "warn" */
+
+
 // import chai as our assertion library
 import chai from 'chai';
 // import our library
