@@ -14,7 +14,7 @@ export let sendRequest = (idSection) => {
 
 	axios.get('https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails')
 		.then(function (response) {
-            test.innerHTML = JSON.stringify(response.data);
+			test.innerHTML = JSON.stringify(response.data);
 			jsonCodeView(`${idSection}__result`, response.data);
 		})
 		.catch(function (error) {
