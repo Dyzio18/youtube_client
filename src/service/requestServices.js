@@ -1,20 +1,18 @@
 import axios from 'axios';
-import {jsonCodeView} from '../view/jsonView';
 
 /*
  * sendRequest() send URL request and return response to .... jsonCodeView()
  * @param {string} idSection
  * @param {string} url
  */
-export let sendRequest = (idSection, url) => {
-	const resultElement = document.getElementById(`${idSection}__result`);
-	resultElement.innerHTML = '';
-	axios.get(url)
+export const sendRequest = (url) => {
+
+	return axios.get(url)
 		.then(function (response) {
-			jsonCodeView(`${idSection}__result`, response.data);
+			return response.data ;
 		})
 		.catch(function (error) {
-			resultElement.innerHTML = error ;
+			console.log( error ) ;
 		});
 };
 

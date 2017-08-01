@@ -1,22 +1,23 @@
 import {searchView} from './searchView';
-import {resultView} from './resultView';
+import {jsonView,showComment} from './resultView';
 
 /*
  * Render main view which is divided into two parts: SEARCH and RESULT section
  */
-export const sectionView = (idElem ) => {
+export const sectionView = (idRoot, idSection ) => {
 	// let mySide = setHeader() + setMainSection();
 	let appView = `
 			${setHeader()}
             <section class="container ">
                 <div class="row">
-                    ${searchView('video')}
-                    ${resultView('video')}                
+                    ${searchView(idSection)}
+                    ${jsonView(idSection)} 
+                    ${showComment(idSection)}                
                 </div>
             </section><!--/ Channel -->
 	`;
 
-	document.getElementById( idElem ).innerHTML += appView;
+	document.getElementById( idRoot ).innerHTML += appView;
 };
 /*
  * Render Header
