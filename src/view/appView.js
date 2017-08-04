@@ -31,8 +31,8 @@ export const appView = root => {
 
 const displayVideoData = response => {
     document.getElementById('videoData').innerHTML = '';
-    document.getElementById('videoData').innerHTML += `<!-- VIDEO DISPLAY -->  <img class="video__preview center" src="${response.thumbnail.url}">
-<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/${response.videoId}" frameborder="0" allowfullscreen></iframe> -->
+    document.getElementById('videoData').innerHTML += `<!-- VIDEO DISPLAY --><!--  <img class="video__preview center" src="${response.thumbnail.url}">-->
+<iframe width="100%" height="400px" src="https://www.youtube.com/embed/${response.videoId}" frameborder="0" allowfullscreen></iframe> 
 
             <div class="row-fluid ">
                 <h1 class="lead ">
@@ -80,7 +80,7 @@ const displayCommentsData = response => {
             <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="${elem.authorProfileImageUrl}" style="width: 64px; height: 64px;">
         </a>
         <div class="media-body">
-            <h4 class="media-heading">${elem.authorDisplayName} <a href="${elem.authorChannelUrl}">link</a></h4 > 
+            <h4 class="media-heading">${elem.authorDisplayName} <a href="${elem.authorChannelUrl}">link</a> +${elem.likeCount}</h4 > 
             ${elem.textDisplay}
             </div>
             </div>`
