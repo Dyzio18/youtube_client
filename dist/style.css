@@ -1,18 +1,32 @@
-.play{
-    width: 90%;
-    max-width: 600px;
-    height: auto;
+.video__preview {
+    width: 100%;
+    border: 2px solid #aa00aa;
+    -webkit-filter: sepia(1) hue-rotate(200deg);
+    filter: sepia(1) hue-rotate(200deg);
+    -webkit-transition:  0.5s;
+    -moz-transition:  0.5s;
+    -ms-transition:  0.5s;
+    -o-transition:  0.5s;
+    transition:  0.5s;
+    cursor: pointer;
 }
-.margTop__m{
-    margin-top:20px;
-}
-pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
-.string { color: green; }
-.number { color: darkorange; }
-.boolean { color: blue; }
-.null { color: magenta; }
-.key { color: red; }
 
-.JSONviewer{
-    max-height: 350px;
+.video__preview:hover {
+    -webkit-filter: contrast(1.4) saturate(1.8) sepia(.6);
+    filter: contrast(1.4) saturate(1.8) sepia(.6);
+    -webkit-transition:  0.5s;
+    -moz-transition:  0.5s;
+    -ms-transition:  0.5s;
+    -o-transition:  0.5s;
+    transition:  0.5s;
+}
+
+
+.search__bar{
+    width: 500px;
+}
+
+.center{
+    margin-left: auto;
+    margin-right:auto;
 }

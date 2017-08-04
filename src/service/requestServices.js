@@ -1,22 +1,19 @@
 import axios from 'axios';
 
 /*
- * sendRequest() send URL request and return response to .... jsonCodeView()
- * @param {string} idSection
+ * sendRequest() send URL request and return response from Youtube API
  * @param {string} url
+ * @return {JSON} response.data
  */
 export const sendRequest = (url) => {
-
-	return axios.get(url)
-		.then(function (response) {
-			return response.data ;
-		})
-		.catch(function (error) {
-			console.log( error ) ;
-		});
+    return new Promise((resolve, reject) => {
+        axios.get(url)
+            .then(function (response) {
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
 };
 
-/* TODO
- * url must be variable
- * https://www.googleapis.com/youtube/v3/channels?id=UCACp5rqV3Ki0SNdXWDBLhRA%20&key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&part=contentDetails
- */

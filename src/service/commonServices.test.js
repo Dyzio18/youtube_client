@@ -1,11 +1,8 @@
 /* eslint no-undef: "warn" */
 
-
-// import chai as our assertion library
 import chai from 'chai';
-// import our library
 import {syntaxHighlight} from './commonServices';
-// initialize chai should
+
 chai.should();
 chai.expect();
 const expect = chai.expect;

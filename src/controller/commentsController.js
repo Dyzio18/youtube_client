@@ -1,18 +1,45 @@
 import {sendRequest} from '../service/requestServices';
-import {jsonCodeView} from '../view/jsonView';
-import {getVideoID} from './videoController';
-
-const USER_KEY = 'AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA';
+import {configYoutube} from '../../config/config.youtube';
+import {getVideoId} from "./videoController";
 
 /**
- * watching changes in view - search
- * @param {string} idSection
+ * function is responsible for send request and return object with all comments data
+ * function get normal youtube video URL (e.g. https://www.youtube.com/watch?v=8YFo7-63X7w)
+ * @param {string} url
+ * @return {object}
  */
-export const commentsController = (idSection) => {
-    document.getElementById(`${idSection}__btn`).onclick = () => {
-        let urlValue = document.getElementById(`${idSection}__btn`).value;
-        let url = `https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyDrlVfgXyOC7omkycJ7LMeyxMjEQERi2xA&textFormat=plainText&part=snippet&videoId=${getVideoID('https://www.youtube.com/watch?v=PDJPpG8e4n4')}&maxResults=5`;
+export function getCommentsData(url) {
+    try {
+        const parseUrl = generateCommentsUrl(url);
+        return sendRequest(parseUrl).then((response, error) => {
+            const commentData = [];
+            response.items.forEach((elem) => {
+                const comment = {
+                    authorDisplayName: elem.snippet.topLevelComment.snippet.authorDisplayName,
+                    authorProfileImageUrl: elem.snippet.topLevelComment.snippet.authorProfileImageUrl,
+                    authorChannelUrl: elem.snippet.topLevelComment.snippet.authorChannelUrl,
+                    textDisplay: elem.snippet.topLevelComment.snippet.textDisplay,
+                    textOriginal: elem.snippet.topLevelComment.snippet.textOriginal,
+                    likeCount: elem.snippet.topLevelComment.snippet.likeCount,
+                    publishedAt: elem.snippet.topLevelComment.snippet.publishedAt,
+                    updatedAt: elem.snippet.topLevelComment.snippet.updatedAt,
+                    totalReplyCount: elem.snippet.totalReplyCount
+                };
+                commentData.push(comment);
+            });
+            return commentData;
+        }).catch(err => {
+            return err;
+        })
+    } catch(error){
+        return {error};
+    }
+}
 
-        sendRequest(url).then(response => jsonCodeView(`${idSection}__comments`, response));
-    };
-};
+/**
+ * render video url and convert to api url request
+ * @param {string} url
+ * @return {string} parseUrl
+ */
+const generateCommentsUrl = (url) => `https://www.googleapis.com/youtube/v3/commentThreads?key=${configYoutube.userKey}&textFormat=plainText&order=relevance&part=snippet&videoId=${getVideoId(url)}`;
+

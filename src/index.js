@@ -1,12 +1,6 @@
-import {sectionView}  from './view/appView';
-import {videoController} from './controller/videoController';
-import {commentsController} from './controller/commentsController';
+import {appView} from "./view/appView";
 
+appView('app');
 
-sectionView('app', 'video');
-videoController('video');
-//commentsController('video');
-
-/* TODO
--   Config file
- */
+const nameUser = 'Dyzio';
+console.log(`Hello ${nameUser}!`);
