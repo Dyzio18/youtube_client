@@ -6,5 +6,6 @@ An application using Youtube api
  - Add suggested videos
  - Change View
  - Search by tag, video name
+ - description max height -> scroll
  - ?React?
 */

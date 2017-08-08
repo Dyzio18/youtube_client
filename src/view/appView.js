@@ -1,5 +1,6 @@
 import {getVideoData} from '../controller/videoController';
 import {getCommentsData} from '../controller/commentsController';
+import {findVideos} from "../controller/searchController"
 
 const videoURL = 'https://www.youtube.com/watch?v=zcq4c0I_sVk';
 
@@ -10,23 +11,30 @@ export const appView = root => {
         const searchContent = document.getElementById('search').value;
 
         if (searchContent) {
-            getVideoData(searchContent)
+
+            findVideos(searchContent)
                 .then(data => {
-                    displayVideoData(data);
+                    console.log(data);
+                    findPanel(data);
                 }).catch(err => {
-                error.log(err);
+                error.log(err)
             });
-            getCommentsData(searchContent)
-                .then(data => {
-                    console.log(data[1]);
-                    displayCommentsData(data);
-                }).catch(err => {
-                error.log(err);
-            });
+
+            /* getVideoData(searchContent)
+                 .then(data => {
+                     displayVideoData(data);
+                 }).catch(err => {
+                 error.log(err);
+             });
+             getCommentsData(searchContent)
+                 .then(data => {
+                     console.log(data[1]);
+                     displayCommentsData(data);
+                 }).catch(err => {
+                 error.log(err);
+             });*/
         }
     });
-
-
 };
 
 const displayVideoData = response => {
@@ -86,5 +94,18 @@ const displayCommentsData = response => {
             </div>`
     });
     document.getElementById('comments').innerHTML = commentsContent;
+
+};
+
+const findPanel = response => {
+    const findPanel = document.getElementById('findPanel');
+    findPanel.innerHTML = '';
+
+    let searchContent = '';
+    response.forEach((elem) => {
+        searchContent += `<img src="${elem.thumbnails}">`;
+    });
+    findPanel.innerHTML = searchContent;
+
 
 };
