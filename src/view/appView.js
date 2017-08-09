@@ -1,6 +1,6 @@
 import {getVideoData} from '../controller/videoController';
 import {getCommentsData} from '../controller/commentsController';
-import {findVideos} from "../controller/searchController"
+import {findChannel, findVideos, findVideosInChannel} from "../controller/searchController"
 
 const videoURL = 'https://www.youtube.com/watch?v=zcq4c0I_sVk';
 
@@ -12,13 +12,30 @@ export const appView = root => {
 
         if (searchContent) {
 
-            findVideos(searchContent)
+           findVideos(searchContent)
                 .then(data => {
                     console.log(data);
-                    findPanel(data);
+                    findPanel(data, 'videos');
                 }).catch(err => {
                 error.log(err)
             });
+
+            findChannel(searchContent)
+                .then(data => {
+                    console.log(data);
+                    findPanel(data, 'channel');
+                }).catch(err => {
+                error.log(err)
+            });
+
+            /*findVideosInChannel(searchContent, 'UCACp5rqV3Ki0SNdXWDBLhRA')
+                .then(data => {
+                    console.log(data);
+                    findPanel(data, 'Videos in Channel');
+                }).catch(err => {
+                error.log(err)
+            });*/
+
 
             /* getVideoData(searchContent)
                  .then(data => {
@@ -97,15 +114,17 @@ const displayCommentsData = response => {
 
 };
 
-const findPanel = response => {
+const findPanel = (response, header) => {
     const findPanel = document.getElementById('findPanel');
-    findPanel.innerHTML = '';
+    findPanel.innerHTML += '<br><br><br><br>';
 
-    let searchContent = '';
+    let searchContent = `<h2>${header}</h2>`;
     response.forEach((elem) => {
-        searchContent += `<img src="${elem.thumbnails}">`;
+        searchContent += ` ${ ( header === 'Videos in Channel' ) ?
+            `<p>${elem.title} <a href="${elem.videoUrl}" > link </a></p>
+                <img src="${elem.thumbnails}">` :
+            `<p>${elem.title} <a href="${elem.channelUrl}" > link </a></p>
+                <img src="${elem.thumbnails}">`} `;
+        findPanel.innerHTML = searchContent;
     });
-    findPanel.innerHTML = searchContent;
-
-
 };
