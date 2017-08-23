@@ -10,7 +10,6 @@ import Footer from './layout/Footer';
 
 /* Controller */
 import {findVideos} from './../controller/searchController'
-import {getVideoData} from './../controller/videoController';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -18,7 +17,6 @@ export default class App extends React.Component {
         this.state = {
             videos: [],
             selectedVideo: null,
-            videoDetails: 'heeeej'
         };
     }
 
@@ -27,14 +25,7 @@ export default class App extends React.Component {
             this.setState({
                 videos: data,
                 selectedVideo: data[0]
-            });/*
-            getVideoData(data[0].videoUrl).then(details => {
-                this.setState({
-                    videoDetails: details
-                });
-            }).catch(err => {
-                error.log(err);
-            });*/
+            });
         }).catch(err => {
             error.log(err);
         });
@@ -53,7 +44,7 @@ export default class App extends React.Component {
                     <div className="row-fluid">
                         <div className="span5">
                             <SearchBar onSearchDataChange={videoSearch}/>
-                            <VideoDetail video={this.state.selectedVideo} details={this.state.videoDetails}/>
+                            <VideoDetail video={this.state.selectedVideo}/>
                         </div>
                         <div className="span1">
 

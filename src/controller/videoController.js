@@ -4,12 +4,12 @@ import {configYoutube} from '../../config/config.youtube';
 /**
  * function is responsible for send request and return object with all video data
  * function get normal youtube video URL (e.g. https://www.youtube.com/watch?v=8YFo7-63X7w)
- * @param {string} url
+ * @param {string} id
  * @return {object}
  */
-export function getVideoData(url) {
+export function getVideoData(id) {
 
-	const parseUrl = generateVideoUrl(url);
+	const parseUrl = generateVideoUrl(id);
 	try {
 		return sendRequest(parseUrl).then((response, error) => {
 			let res = response.items[0];
@@ -41,10 +41,10 @@ export function getVideoData(url) {
 
 /**
  * render video url to request url
- * @param url
+ * @param id
  * @return {string} parse url
  */
-const generateVideoUrl = (url) => `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${getVideoId(url)}&maxResults%7D&key=${configYoutube.userKey}`;
+const generateVideoUrl = (id) => `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${(id)}&maxResults%7D&key=${configYoutube.userKey}`;
 
 
 /**

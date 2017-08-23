@@ -1,7 +1,6 @@
 node_modules/
-.idea/workspace.xml
 dist/*.js
-.idea/*.xml
+config/config.youtube.js
 .idea/
 .eslintcache
 npm-debug.log
