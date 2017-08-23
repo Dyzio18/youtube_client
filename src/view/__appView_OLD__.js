@@ -1,34 +1,34 @@
 import {getVideoData} from '../controller/videoController';
 import {getCommentsData} from '../controller/commentsController';
-import {findChannel, findVideos, findVideosInChannel} from "../controller/searchController"
+import {findChannel, findVideos, findVideosInChannel} from '../controller/searchController';
 
 const videoURL = 'https://www.youtube.com/watch?v=zcq4c0I_sVk';
 
 export const appView = root => {
 
-    document.getElementById('searchButton').addEventListener("click", () => {
+	document.getElementById('searchButton').addEventListener('click', () => {
 
-        const searchContent = document.getElementById('search').value;
+		const searchContent = document.getElementById('search').value;
 
-        if (searchContent) {
+		if (searchContent) {
 
-           findVideos(searchContent)
-                .then(data => {
-                    console.log(data);
-                    findPanel(data, 'videos');
-                }).catch(err => {
-                error.log(err)
-            });
+			findVideos(searchContent)
+				.then(data => {
+					console.log(data);
+					findPanel(data, 'videos');
+				}).catch(err => {
+					error.log(err);
+				});
 
-            findChannel(searchContent)
-                .then(data => {
-                    console.log(data);
-                    findPanel(data, 'channel');
-                }).catch(err => {
-                error.log(err)
-            });
+			findChannel(searchContent)
+				.then(data => {
+					console.log(data);
+					findPanel(data, 'channel');
+				}).catch(err => {
+					error.log(err);
+				});
 
-            /*findVideosInChannel(searchContent, 'UCACp5rqV3Ki0SNdXWDBLhRA')
+			/* findVideosInChannel(searchContent, 'UCACp5rqV3Ki0SNdXWDBLhRA')
                 .then(data => {
                     console.log(data);
                     findPanel(data, 'Videos in Channel');
@@ -37,7 +37,7 @@ export const appView = root => {
             });*/
 
 
-            /* getVideoData(searchContent)
+			/* getVideoData(searchContent)
                  .then(data => {
                      displayVideoData(data);
                  }).catch(err => {
@@ -50,13 +50,13 @@ export const appView = root => {
                  }).catch(err => {
                  error.log(err);
              });*/
-        }
-    });
+		}
+	});
 };
 
 const displayVideoData = response => {
-    document.getElementById('videoData').innerHTML = '';
-    document.getElementById('videoData').innerHTML += `<!-- VIDEO DISPLAY --><!--  <img class="video__preview center" src="${response.thumbnail.url}">-->
+	document.getElementById('videoData').innerHTML = '';
+	document.getElementById('videoData').innerHTML += `<!-- VIDEO DISPLAY --><!--  <img class="video__preview center" src="${response.thumbnail.url}">-->
 <iframe width="100%" height="400px" src="https://www.youtube.com/embed/${response.videoId}" frameborder="0" allowfullscreen></iframe> 
 
             <div class="row-fluid ">
@@ -93,14 +93,14 @@ const displayVideoData = response => {
                         </div>
                     </div>
                 </div>
-            </div>`
+            </div>`;
 };
 
 const displayCommentsData = response => {
-    document.getElementById('comments').innerHTML = '';
-    let commentsContent = '';
-    response.forEach((elem) => {
-        commentsContent += `<div class="media">
+	document.getElementById('comments').innerHTML = '';
+	let commentsContent = '';
+	response.forEach((elem) => {
+		commentsContent += `<div class="media">
         <a class="pull-left" href="#">
             <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="${elem.authorProfileImageUrl}" style="width: 64px; height: 64px;">
         </a>
@@ -108,23 +108,23 @@ const displayCommentsData = response => {
             <h4 class="media-heading">${elem.authorDisplayName} <a href="${elem.authorChannelUrl}">link</a> +${elem.likeCount}</h4 > 
             ${elem.textDisplay}
             </div>
-            </div>`
-    });
-    document.getElementById('comments').innerHTML = commentsContent;
+            </div>`;
+	});
+	document.getElementById('comments').innerHTML = commentsContent;
 
 };
 
 const findPanel = (response, header) => {
-    const findPanel = document.getElementById('findPanel');
-    findPanel.innerHTML += '<br><br><br><br>';
+	const findPanel = document.getElementById('findPanel');
+	findPanel.innerHTML += '<br><br><br><br>';
 
-    let searchContent = `<h2>${header}</h2>`;
-    response.forEach((elem) => {
-        searchContent += ` ${ ( header === 'Videos in Channel' ) ?
-            `<p>${elem.title} <a href="${elem.videoUrl}" > link </a></p>
+	let searchContent = `<h2>${header}</h2>`;
+	response.forEach((elem) => {
+		searchContent += ` ${ ( header === 'Videos in Channel' ) ?
+			`<p>${elem.title} <a href="${elem.videoUrl}" > link </a></p>
                 <img src="${elem.thumbnails}">` :
-            `<p>${elem.title} <a href="${elem.channelUrl}" > link </a></p>
+			`<p>${elem.title} <a href="${elem.channelUrl}" > link </a></p>
                 <img src="${elem.thumbnails}">`} `;
-        findPanel.innerHTML = searchContent;
-    });
+		findPanel.innerHTML = searchContent;
+	});
 };

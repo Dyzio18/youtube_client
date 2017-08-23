@@ -1,61 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="./dist/css/bootstrap.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="./dist/css/bootstrap-responsive.css" media="screen,projection"/>
-
     <link type="text/css" rel="stylesheet" href="./dist/style.css" media="screen,projection"/>
-    <!--<link type="text/css" rel="stylesheet" href="./dist/css/bootstrap-theme.css" media="screen,projection"/>
-    -->
-
     <title>Youtube api</title>
 </head>
+
 <body data-spy="scroll">
-<nav>
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About me</a></li>
-        <li><a href="#">Info</a></li>
-    </ul>
-</nav>
-
-<section class="container center" >
-    <div class="row-fluid">
-
-        <div class="span7">
-            <div class="input-append">
-                <label>Search:</label>
-                <input id="search"  class="search__bar" type="text" value="">
-                <button id="searchButton" class=" btn" type="button"> Go!  </button>
-            </div>
-
-            <div class="alert">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Use <strong>search bar </strong>to find your video
-            </div>
-            <div id="videoData"></div>
-
-
-            <p class="lead">
-                <span class="label">Suggested </span> video for you:
-            </p>
-            <div id="findPanel"></div>
-
-        </div>
-
-        <div class="span5">
-            <p class="lead">
-                <span class="label">Comments </span>:
-            </p>
-            <div id="comments">  </div>
-        </div>
-
-
-    </div>
-</section>
-<div id="app"></div>
-
+    <div id="root"></div>
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>

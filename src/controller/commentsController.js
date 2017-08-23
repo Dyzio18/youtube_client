@@ -1,6 +1,6 @@
 import {sendRequest} from '../service/requestServices';
 import {configYoutube} from '../../config/config.youtube';
-import {getVideoId} from "./videoController";
+import {getVideoId} from './videoController';
 
 /**
  * function is responsible for send request and return object with all comments data
@@ -9,31 +9,31 @@ import {getVideoId} from "./videoController";
  * @return {object}
  */
 export function getCommentsData(url) {
-    try {
-        const parseUrl = generateCommentsUrl(url);
-        return sendRequest(parseUrl).then((response, error) => {
-            const commentData = [];
-            response.items.forEach((elem) => {
-                const comment = {
-                    authorDisplayName: elem.snippet.topLevelComment.snippet.authorDisplayName,
-                    authorProfileImageUrl: elem.snippet.topLevelComment.snippet.authorProfileImageUrl,
-                    authorChannelUrl: elem.snippet.topLevelComment.snippet.authorChannelUrl,
-                    textDisplay: elem.snippet.topLevelComment.snippet.textDisplay,
-                    textOriginal: elem.snippet.topLevelComment.snippet.textOriginal,
-                    likeCount: elem.snippet.topLevelComment.snippet.likeCount,
-                    publishedAt: elem.snippet.topLevelComment.snippet.publishedAt,
-                    updatedAt: elem.snippet.topLevelComment.snippet.updatedAt,
-                    totalReplyCount: elem.snippet.totalReplyCount
-                };
-                commentData.push(comment);
-            });
-            return commentData;
-        }).catch(err => {
-            return err;
-        })
-    } catch(error){
-        return {error};
-    }
+	try {
+		const parseUrl = generateCommentsUrl(url);
+		return sendRequest(parseUrl).then((response, error) => {
+			const commentData = [];
+			response.items.forEach((elem) => {
+				const comment = {
+					authorDisplayName: elem.snippet.topLevelComment.snippet.authorDisplayName,
+					authorProfileImageUrl: elem.snippet.topLevelComment.snippet.authorProfileImageUrl,
+					authorChannelUrl: elem.snippet.topLevelComment.snippet.authorChannelUrl,
+					textDisplay: elem.snippet.topLevelComment.snippet.textDisplay,
+					textOriginal: elem.snippet.topLevelComment.snippet.textOriginal,
+					likeCount: elem.snippet.topLevelComment.snippet.likeCount,
+					publishedAt: elem.snippet.topLevelComment.snippet.publishedAt,
+					updatedAt: elem.snippet.topLevelComment.snippet.updatedAt,
+					totalReplyCount: elem.snippet.totalReplyCount
+				};
+				commentData.push(comment);
+			});
+			return commentData;
+		}).catch(err => {
+			return err;
+		});
+	} catch(error){
+		return {error};
+	}
 }
 
 /**

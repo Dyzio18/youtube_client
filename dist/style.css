@@ -21,12 +21,23 @@
     transition:  0.5s;
 }
 
-
-.search__bar{
-    width: 500px;
-}
-
 .center{
     margin-left: auto;
     margin-right:auto;
 }
+
+.footer{
+    width: 100%;
+    position: fixed;
+    bottom:-20px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Video LIST */
+.video__thumbnails{
+    width: 114px;
+    height: 64px;
+
+}
+

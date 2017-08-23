@@ -6,14 +6,14 @@ import axios from 'axios';
  * @return {JSON} response.data
  */
 export const sendRequest = (url) => {
-    return new Promise((resolve, reject) => {
-        axios.get(url)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    });
+	return new Promise((resolve, reject) => {
+		axios.get(url)
+			.then(function (response) {
+				resolve(response.data);
+			})
+			.catch(function (error) {
+				reject(error);
+			});
+	});
 };
 

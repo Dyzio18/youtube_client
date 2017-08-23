@@ -12,7 +12,7 @@ const NAME = 'index', /*process.env.NAME,*/
 var plugins = [];
 
 var libconfig = {
-    entry: __dirname + '/src/index.js',
+    entry: __dirname + '/src/indexClient.js',
     devtool: 'source-map',
     output: {
         path: __dirname + '/dist',
@@ -28,7 +28,7 @@ var libconfig = {
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 options: {
-                    presets: ['es2015', 'es2016']
+                    presets: ['es2015', 'es2016','react']
                 }
             }
         ]
